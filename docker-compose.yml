@@ -1,0 +1,36 @@
+version: "3"
+services:
+    # forwardBot:
+    #     image: node:18-slim # Выберите подходящий образ Node.js
+    #     container_name: forwarder
+    #     restart: always
+    #     ports:
+    #         - "3000:3000" # Порт, на котором будет работать приложение
+    #     working_dir: /usr/src/app
+    #     volumes:
+    #         - ./tgBot:/usr/src/app # Монтируем локальную директорию с кодом в контейнер
+    #     command: node ./forwardBot.js # Команда для запуска приложения с hot reload
+    #     depends_on:
+    #         - mongo
+
+    # parseBot:
+    #     image: node:18-slim # Выберите подходящий образ Node.js
+    #     container_name: parser
+    #     restart: always
+    #     ports:
+    #         - "3001:3000" # Порт, на котором будет работать приложение
+    #     working_dir: /usr/src/app
+    #     volumes:
+    #         - ./tgBot:/usr/src/app # Монтируем локальную директорию с кодом в контейнер
+    #     command: node ./parseBot.js # Команда для запуска приложения с hot reload
+    #     depends_on:
+    #         - mongo # Если ваше приложение зависит от базы данных, добавьте ее зависимость
+
+    mongo:
+        image: mongo:latest
+        container_name: mongo
+        restart: always
+        ports:
+            - "27017:27017"
+        volumes:
+            - ./data:/data/db
